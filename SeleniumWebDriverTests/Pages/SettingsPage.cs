@@ -43,6 +43,9 @@ namespace SeleniumWebDriverTests.Pages
         [FindsBy(How = How.XPath, Using = "//button[@class='button button--wide']")]
         private IWebElement changeButton;
 
+        [FindsBy(How = How.ClassName, Using = "alert  alert--green")]
+        private IWebElement PasswordChange;
+
         public SettingsPage(IWebDriver driver)
         {
             this.driver = driver;
@@ -76,6 +79,11 @@ namespace SeleniumWebDriverTests.Pages
             passwordNew.SendKeys(newpassword);
             passwordNew2.SendKeys(newpassword);
             changeButton.Click();
+        }
+
+        public bool IsChangePassword()
+        {
+            return PasswordChange.Text.Equals("Пароль успешно изменён");
         }
 
 

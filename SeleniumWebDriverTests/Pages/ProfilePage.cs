@@ -37,6 +37,10 @@ namespace SeleniumWebDriverTests.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class='form__group form__group--controls']/button[@class='button button--wide']")]
         private IWebElement saveProfile;
 
+        [FindsBy(How = How.ClassName, Using = "alert  alert--green")]
+        private IWebElement Change;
+
+
 
         public ProfilePage(IWebDriver driver)
         {
@@ -62,6 +66,13 @@ namespace SeleniumWebDriverTests.Pages
             LastNameTexbox.SendKeys(LastName);            
             birthdateTexbox.SendKeys(birthdate);
             saveProfile.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+        }
+
+        public bool isProfileChange()
+        {
+            
+            return Change.Text.Equals("Данные обновлены");
         }
         
     }

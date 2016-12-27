@@ -28,6 +28,13 @@ namespace SeleniumWebDriverTests
             mainPage.Open(login, password);
         }
 
+        public bool IsLogin()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+
+            return mainPage.isAccountButtonExists();
+        }
+
 
         public void StartCource()
         {
@@ -35,6 +42,13 @@ namespace SeleniumWebDriverTests
             mainPage.StartCource();
         }
 
+
+        public bool IsCource()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+
+            return mainPage.isStartCource();
+        }
 
 
         public void LogOut()
@@ -50,6 +64,12 @@ namespace SeleniumWebDriverTests
 
             }
         }   
+
+        public bool IsLogOut()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            return mainPage.IsLogOut();
+        }
 
         public bool ChahgeProfilePic(string picture)
         {
@@ -75,10 +95,22 @@ namespace SeleniumWebDriverTests
             profilesPage.WriteProfilePage(FirstName, LastName, birthdate);
         }
 
+        public bool IsProfile()
+        {
+            Pages.ProfilePage profilesPage = new Pages.ProfilePage(driver);
+            return profilesPage.isProfileChange();
+        }
+
         public void DecorText()
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.StartDecor();
+        }
+
+        public bool IsDecor()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            return mainPage.IsStartDecor();
         }
 
         public void ChangePassword(string password, string newpassword)
@@ -88,11 +120,23 @@ namespace SeleniumWebDriverTests
             settingPage.ChangePassword(password, newpassword);
         }
 
+        public bool IsChangePassword()
+        {
+            Pages.SettingsPage settingPage = new Pages.SettingsPage(driver);
+            return settingPage.IsChangePassword();
+        }
+
         public void StartStudy()
         {
             Pages.StudyPage studyPage = new Pages.StudyPage(driver);
             studyPage.OpenPage();
             studyPage.StartStudy();
+        }
+
+        public bool IsStartStudy()
+        {
+            Pages.StudyPage studyPage = new Pages.StudyPage(driver);
+            return studyPage.IsStartStudy();
         }
     }
 }

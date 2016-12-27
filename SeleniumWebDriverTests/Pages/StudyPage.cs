@@ -14,15 +14,17 @@ namespace SeleniumWebDriverTests.Pages
         private IWebDriver driver;
         private const string BASE_URL = "https://htmlacademy.ru";
 
-        [FindsBy(How = How.XPath, Using = "//p[@class='start-home__btn-wrapper']/a[@class='button button--green button--large button--wide button--split-effect' and @href='/continue']")]
+        [FindsBy(How = How.XPath, Using = "//a[@class='button button--green button--large button--wide button--split-effect']")]
         private IWebElement startStudy;
 
         [FindsBy(How = How.XPath, Using = "//span[@class='btn ha-task-description-close']")]
         private IWebElement perform;
 
-        [FindsBy(How = How.Id, Using = "server-check")]
+        [FindsBy(How = How.XPath, Using = "//span[@class='btn']")]
         private IWebElement check;
 
+        [FindsBy(How = How.ClassName, Using = "label ha-goal-label label-important")]
+        private IWebElement redColor;
 
         public StudyPage(IWebDriver driver)
         {
@@ -41,8 +43,14 @@ namespace SeleniumWebDriverTests.Pages
             startStudy.Click();
             Thread.Sleep(TimeSpan.FromSeconds(5));
             perform.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(5));
             check.Click();
             Thread.Sleep(TimeSpan.FromSeconds(5));
+        }
+
+        public bool IsStartStudy()
+        {
+            return redColor.Text.Equals("Цель 1");
         }
     }
 }

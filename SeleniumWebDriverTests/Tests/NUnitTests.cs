@@ -37,7 +37,8 @@ namespace SeleniumWebDriverTests
         [Test]
         public void LogInTest()
         {
-            step.LogIn(login, password);     
+            step.LogIn(login, password);
+            Assert.True(step.IsLogin());
         }
 
         
@@ -47,6 +48,7 @@ namespace SeleniumWebDriverTests
         {
             step.LogIn(login, password);
             step.StartCource();
+            Assert.True(step.IsCource());
         }
 
         [Test]
@@ -63,6 +65,7 @@ namespace SeleniumWebDriverTests
         {
             step.LogIn(login, password);
             step.ProfileUser(FirstName, LastName, birthdate);
+            Assert.True(step.IsProfile());
         }
 
 
@@ -70,7 +73,8 @@ namespace SeleniumWebDriverTests
         public void DecorTest()
         {
             step.LogIn(login, password);
-            step.DecorText();    
+            step.DecorText();
+            Assert.True(step.IsDecor());
         }
 
 
@@ -79,6 +83,7 @@ namespace SeleniumWebDriverTests
         {
             step.LogIn(login, password);
             step.ChangePassword(password, passwordnew);
+            Assert.True(step.IsChangePassword());
         }
 
         [Test]
@@ -86,6 +91,7 @@ namespace SeleniumWebDriverTests
         {
             step.LogIn(login, password);
             step.StartStudy();
+            Assert.True(step.IsStartStudy());
         }
 
         [Test]
@@ -93,6 +99,7 @@ namespace SeleniumWebDriverTests
         {
             step.LogIn(login, password);
             step.LogOut();
+            Assert.True(step.IsLogOut());
         }
 
 

@@ -44,6 +44,18 @@ namespace SeleniumWebDriverTests.Pages
         [FindsBy(How = How.XPath, Using = "//a[@href='/continue/course/43']")]
         private IWebElement buttonPlay;
 
+        [FindsBy(How = How.LinkText, Using = "Test Test")]
+        private IWebElement Account;
+
+        [FindsBy(How = How.LinkText, Using = "Как уже говорилось")]
+        private IWebElement Cource;
+
+        [FindsBy(How = How.LinkText, Using = "Оформление текста, часть 1")]
+        private IWebElement Decor;
+
+        [FindsBy(How = How.ClassName, Using = "//a[@class='main-nav__link' and @href='/login?redirect_url=/']")]
+        private IWebElement logOut;
+
         public MainPage(IWebDriver driver)
         {
             this.driver = driver;
@@ -62,10 +74,21 @@ namespace SeleniumWebDriverTests.Pages
             buttonSubmit.Click();
         }
 
+        public bool isAccountButtonExists()
+        {
+            return Account.Text.Equals("Test Test");
+        }
+
         public void StartCource()
         {
             buttonCourse.Click();
             buttonStart.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+        }
+
+        public bool isStartCource()
+        {
+            return Cource.Text.Equals("Как уже говорилось");
         }
 
 
@@ -95,12 +118,22 @@ namespace SeleniumWebDriverTests.Pages
             alert.Accept();
         }
 
+        public bool IsLogOut()
+        {
+            return logOut.Text.Equals("Войти");
+        }
+
 
         public void StartDecor()
         {
             buttonCourse.Click();
             textDecor.Click();
             buttonPlay.Click();
+        }
+
+        public bool IsStartDecor()
+        {
+            return Decor.Text.Equals("Оформление текста, часть 1");
         }
 
 
